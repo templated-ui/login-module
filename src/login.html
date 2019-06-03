@@ -1,0 +1,72 @@
+<login>
+    <article>
+        <header>
+            <h2>Logo</h2>
+            <div class="please-trying">
+                برای ادامه لاگین کنید
+            </div>
+        </header>
+        <br>
+        <form onsubmit={handleSubmit} autocomplete="off">
+            <label for="inp-username" class="inp">
+                <input type="text" dir="ltr" id="inp-username" placeholder="&nbsp;">
+                <span class="label">نام کاربری</span>
+                <span class="border"></span>
+            </label>
+            <br>
+            <label for="inp-password" class="inp">
+                <input type="password" dir="ltr" id="inp-password" placeholder="&nbsp;">
+                <span class="label">رمز عبور</span>
+                <span class="border"></span>
+            </label>
+            <br>
+
+            <button type="submit" class="login-btn button">ورود به سیستم</button>
+        </form>
+        <div class={"browser-info "}>
+                مرورگر {browser.name}@{browser.version} 
+            </div>
+            <div class=" old-browser" if={!browserIsOK}>
+            ممکن است مرورگر شما با این سامانه ناسازگار باشد
+        </div>
+    </article>
+
+    <script>
+        import config from './config';
+        import loadResource from './lazy-load';
+        import { detect } from 'detect-browser';
+
+        function handleError() {
+
+        }
+        this.browser = detect();
+        this.browserIsOK = +this.browser.version.toString().split('.')[0] >= 64;
+
+        this.handleSubmit = async function (e) {
+            const loginBtn = document.querySelector('.login-btn');
+            loginBtn.classList.add('is-loading');
+            e.preventDefault();
+            for (const resource of config.resources) await loadResource(resource);
+            const [username, password] = ['#inp-username', '#inp-password'].map(selector => document.querySelector(selector)).map(el => el && el.value);
+            const body = { username, password };
+            const response = await fetch(config.loginActionUrl, {
+                method: config.loginHttpMethod,
+                body: JSON.stringify(body),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (!response.ok) {
+                const contentType = response.headers['Content-Type'];
+                if (/json/.test(contentType)) {
+                    handleError(await response.json());
+                }
+                else handleError(await response.text());
+                return;
+            }
+
+            alert('asd');
+            return false;
+        }
+
+    </script>
+</login>

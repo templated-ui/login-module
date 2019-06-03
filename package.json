@@ -1,0 +1,47 @@
+{
+  "name": "login-module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "concurrently  npm:copy-index npm:webpack-server npm:sass npm:sass-watch npm:sass",
+    "webpack:build": " webpack  --env.production --mode  production --optimize-minimize ",
+    "build":"concurrently npm:webpack:build  npm:sass",
+    "webpack-server": "webpack-dev-server --inline --watch --hot --colors -d --port 3000",
+    "sass": "node-sass src/styles.scss -o dist/  --importer=node_modules/node-sass-tilde-importer  ",
+    "sass-watch": "node-sass --watch src/styles.scss -o dist  --importer=node_modules/node-sass-tilde-importer  ",
+    "copy-index": "copyfiles -a -f ./public/**/*.* dist   "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/templated-ui/login-module.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/templated-ui/login-module/issues"
+  },
+  "homepage": "https://github.com/templated-ui/login-module#readme",
+  "devDependencies": {
+    "@babel/core": "7.1.2",
+    "@babel/preset-env": "7.1.0",
+    "babel-loader": "^8.0.4",
+    "concurrently": "^4.1.0",
+    "copyfiles": "^2.1.0",
+    "node-sass": "^4.12.0",
+    "node-sass-tilde-importer": "^1.0.2",
+    "riot": "^3.13.0",
+    "riot-compiler": "^3.5.1",
+    "riot-hot-reload": "1.0.0",
+    "riot-tag-loader": "^2.1.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "@material/textfield": "^2.3.0",
+    "bulma": "^0.7.5",
+    "detect-browser": "^4.5.0" 
+     
+  }
+}

@@ -1,0 +1,145 @@
+@import "~bulma/sass/utilities/all";
+@import "~bulma/sass/base/all";
+@import "~bulma/sass/utilities/mixins";
+@import "~bulma/sass/elements/button";
+* {
+  box-sizing: border-box;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+.inp {
+  position: relative;
+  margin: auto;
+  background: #fff;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.inp .label {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  font-size: 14px;
+  color: #9098a9;
+  font-weight: 500;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+}
+.inp .border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  width: 100%;
+  background: #07f;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
+}
+.inp input {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  padding: 12px 0;
+  height: 44px;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 2px solid #c8ccd4;
+  background: none;
+  border-radius: 0;
+  color: #223254;
+  transition: all 0.15s ease;
+}
+
+.inp input:not(:placeholder-shown) + span {
+  color: #5a667f;
+  transform: translateY(-16px) translateX(16px) scale(0.75);
+}
+.inp input:focus {
+  background: none;
+  outline: none;
+}
+.inp input:focus + span {
+  color: #07f;
+  transform: translateY(-16px) translateX(16px) scale(0.75);
+}
+.inp input:focus + span + .border {
+  transform: scaleX(1);
+}
+body,
+html {
+   
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+#root {
+  
+  font-family: "Tahoma" !important  ;
+  background: url(0_a5dbd4393ff6a725c7e62b61df7e72f0.jpg);
+  width: 100%;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  overflow: hidden;
+  align-content: center;
+  justify-content: center;
+  .browser-info {
+    opacity: 0.5;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .old-browser {
+    background-color: orangered;
+    color: #fff;
+    padding: 0.3rem;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-size: 0.7rem;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  .button.is-loading::after {   
+    height:2em; 
+    width: 2em;   
+    top:0.7rem;
+  }
+  login article {
+    padding: 2rem;
+    margin-bottom: 28px;
+    border-radius: 0.3rem;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    min-width: 360px;
+    min-height: 538px;
+    overflow: hidden;
+    max-width: 360px;
+    max-height: 538px;
+    header{
+      font-size:12px;
+      margin: 3rem 0;
+    }
+    .login-btn {
+      margin-top: 2rem;
+      font-size: 13px;
+      min-height: 3rem;
+      font-family: "Tahoma" !important  ;
+      color: #fff;
+      background-color: #0067b8;
+      box-shadow: inset 2px 0 2px #555;
+      border-radius: 0.3rem;
+      border: none;
+      width: 100%;
+    }
+  }
+}
