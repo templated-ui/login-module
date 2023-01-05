@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/templated-ui/login-module#readme",
   "devDependencies": {
-    "@babel/core": "7.1.2",
+    "@babel/core": "7.20.12",
     "@babel/preset-env": "7.1.0",
     "babel-loader": "^8.0.4",
     "concurrently": "^4.1.0",
